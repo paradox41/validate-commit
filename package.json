@@ -92,7 +92,7 @@
     "gh-pages": "^0.11.0",
     "git-scripts": "^0.2.1",
     "isparta": "^4.0.0",
-    "mocha": "^2.3.4",
+    "mocha": "^3.0.0",
     "mocha-sinon": "^1.1.5",
     "rimraf": "^2.4.4",
     "sinon": "^1.17.4",
