@@ -76,7 +76,7 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "is-file": "^1.0.0",
-    "yargs": "^4.8.1"
+    "yargs": "^5.0.0"
   },
   "devDependencies": {
     "@types/chai": "^3.4.29",
