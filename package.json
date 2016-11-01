@@ -85,7 +85,7 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.45",
     "babel-cli": "^6.16.0",
-    "babel-core": "^6.17.0",
+    "babel-core": "^6.18.2",
     "babel-preset-es2015": "^6.16.0",
     "chai": "^3.5.0",
     "codelyzer": "1.0.0-beta.0",
