@@ -1,5 +1,7 @@
 # Validate Commit
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/willsoto/validate-commit.svg)](https://greenkeeper.io/)
+
 [![NPM version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Coveralls Status][coveralls-image]][coveralls-url]
