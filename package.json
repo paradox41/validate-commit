@@ -71,7 +71,7 @@
     "commitmsg": "./bin/index.js"
   },
   "dependencies": {
-    "chalk": "^1.1.3",
+    "chalk": "^2.0.0",
     "is-file": "^1.0.0",
     "yargs": "^8.0.1"
   },
