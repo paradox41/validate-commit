@@ -20,29 +20,38 @@ var argv = yargs
     default: false,
     description: 'mute log messages'
   })
+  .option('msgfile', {
+    alias: 'mf',
+    type: 'string',
+    default: false,
+    description: 'path to COMMIT_EDITMSG file'
+  })
   .version()
   .help().argv;
 
 var valid = false;
 
+var workingDirectory =  process.cwd()
 var message = argv._[0];
+var msgfile = argv.mf
 var options = {
   preset: argv.preset
 };
+
 
 if (argv.silent) {
   process.env.SILENT = true;
 }
 
 if (message === undefined) {
-  var gitFolder = path.resolve(process.cwd(), '.git');
+  var gitFolder = path.resolve(workingDirectory, '.git');
 
   if (!gitFolder) {
     throw new Error('No .git folder found');
   }
-
-  var commitMsgFile = path.resolve(gitFolder, 'COMMIT_EDITMSG');
-
+  
+  var commitMsgFile =  msgfile ? path.resolve(workingDirectory , msgfile) : path.resolve(gitFolder, 'COMMIT_EDITMSG');
+  
   valid = validate.validateMessageFromFile(commitMsgFile, options);
 } else {
   if (isFile(message)) {
@@ -56,3 +65,4 @@ if (valid === false) {
   process.exit(1);
 }
 process.exit(0);
+
