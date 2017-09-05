@@ -24,7 +24,7 @@ var argv = yargs
     alias: 'mf',
     type: 'string',
     default: false,
-    description: 'path to COMMIT_EDITMSG file'
+    description: 'relative path to COMMIT_EDITMSG file'
   })
   .version()
   .help().argv;
@@ -65,4 +65,3 @@ if (valid === false) {
   process.exit(1);
 }
 process.exit(0);
-

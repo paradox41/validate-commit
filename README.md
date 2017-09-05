@@ -73,6 +73,14 @@ However you can mute it:
 $ validate-commit-msg -s 'unknown(something): wrong'
 ```
 
+
+Validate a commit with .git directory in another location
+
+```bash
+$ validate-commit-msg --mf ../../some/.git/module/COMMIT_EDITMSG 'New: Awesome feature' 
+```
+
+
 ### Within node
 
 ```javascript
@@ -124,6 +132,7 @@ This module, like many others, installs an executable in **./node_modules/.bin**
     -V, --version          output the version number
     -p, --preset <preset>  specify a preset (angular|atom|eslint|ember|jquery|jshint) [angular]
     -s, --silent           mute log messages [false]
+    --mf --msgfile         relative path to COMMIT_EDITMSG file 
 ```
 
 ### Development
