@@ -42,7 +42,7 @@ describe('cli', function() {
   });
 
   it('should not throw an error with a valid commit msm file', function(done) {
-    this.command.push('--mf .git/COMMIT_EDITMSG');
+    this.command.push('--mf ./test/fixtures/angular/valid.txt');
 
     let command = this.command.join(' ');
 
@@ -70,3 +70,4 @@ describe('cli', function() {
   });
 
 });
+

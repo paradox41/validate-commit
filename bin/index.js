@@ -38,7 +38,6 @@ var options = {
   preset: argv.preset
 };
 
-
 if (argv.silent) {
   process.env.SILENT = true;
 }
@@ -52,7 +51,7 @@ if (message === undefined) {
   }
 
   var commitMsgFile =  msgFile ? path.resolve(workspaceRoot , msgFile) : path.resolve(gitFolder, 'COMMIT_EDITMSG');
-  
+    
   valid = validate.validateMessageFromFile(commitMsgFile, options);
 } else {
   if (isFile(message)) {
