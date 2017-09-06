@@ -31,9 +31,9 @@ var argv = yargs
 
 var valid = false;
 
-var workingDirectory =  process.cwd()
+var workspaceRoot =  process.cwd()
 var message = argv._[0];
-var msgfile = argv.mf
+var msgFile = argv.mf
 var options = {
   preset: argv.preset
 };
@@ -44,13 +44,14 @@ if (argv.silent) {
 }
 
 if (message === undefined) {
-  var gitFolder = path.resolve(workingDirectory, '.git');
+
+  var gitFolder = path.resolve(workspaceRoot, '.git');
 
   if (!gitFolder) {
     throw new Error('No .git folder found');
   }
-  
-  var commitMsgFile =  msgfile ? path.resolve(workingDirectory , msgfile) : path.resolve(gitFolder, 'COMMIT_EDITMSG');
+
+  var commitMsgFile =  msgFile ? path.resolve(workspaceRoot , msgFile) : path.resolve(gitFolder, 'COMMIT_EDITMSG');
   
   valid = validate.validateMessageFromFile(commitMsgFile, options);
 } else {
