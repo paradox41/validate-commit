@@ -77,7 +77,7 @@ $ validate-commit-msg -s 'unknown(something): wrong'
 Validate a commit with .git directory in another location
 
 ```bash
-$ validate-commit-msg --mf ../../some/.git/module/COMMIT_EDITMSG 'New: Awesome feature' 
+$ validate-commit-msg --mf ../../some/.git/module/COMMIT_EDITMSG
 ```
 
 

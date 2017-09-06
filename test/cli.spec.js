@@ -40,4 +40,33 @@ describe('cli', function() {
 
     expect(fn).to.throw(Error);
   });
+
+  it('should not throw an error with a valid commit msm file', function(done) {
+    this.command.push('--mf .git/COMMIT_EDITMSG');
+
+    let command = this.command.join(' ');
+
+    exec(command, function(error) {
+      if (error) {
+        throw error;
+      }
+
+      expect(error).to.be.null;
+
+      done();
+    });
+  });
+
+  it('should throw an error with a invalid commit msm file', function() {
+    this.command.push('--mf .git/WRONG_COMMIT_EDITMSG');
+
+    let command = this.command.join(' ');
+
+    let fn = () => {
+      return execSync(command);
+    };
+
+    expect(fn).to.throw(Error);
+  });
+
 });
