@@ -27,6 +27,8 @@ export const angular: Preset = {
       refactor: true,
       perf: true,
       test: true,
+      build: true,
+      ci: true,
       chore: true,
       revert: true
     };
