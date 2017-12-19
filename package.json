@@ -1,6 +1,6 @@
 {
   "name": "validate-commit",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Validate commit messages according to various presets",
   "main": "dist/index.js",
   "author": {
