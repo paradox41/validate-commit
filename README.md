@@ -1,11 +1,9 @@
 # Validate Commit
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/willsoto/validate-commit.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/willsoto/validate-commit.svg?style=svg)](https://circleci.com/gh/willsoto/validate-commit)
 
 [![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Coveralls Status][coveralls-image]][coveralls-url]
-[![Dependency Status][depstat-image]][depstat-url]
 [![Downloads][download-badge]][npm-url]
 
 > Validate commit messages according to various presets
@@ -132,7 +130,7 @@ This module, like many others, installs an executable in **./node_modules/.bin**
     -V, --version          output the version number
     -p, --preset <preset>  specify a preset (angular|atom|eslint|ember|jquery|jshint) [angular]
     -s, --silent           mute log messages [false]
-    --mf --msgfile         relative path to COMMIT_EDITMSG file 
+    --mf --msgfile         relative path to COMMIT_EDITMSG file
 ```
 
 ### Development
@@ -145,15 +143,6 @@ Apache-2.0 © [Will Soto](http://github.com/willsoto)
 
 [npm-url]: https://npmjs.org/package/validate-commit
 [npm-image]: https://img.shields.io/npm/v/validate-commit.svg?style=flat-square
-
-[travis-url]: https://travis-ci.org/willsoto/validate-commit
-[travis-image]: https://img.shields.io/travis/willsoto/validate-commit.svg?style=flat-square
-
-[coveralls-url]: https://coveralls.io/r/willsoto/validate-commit
-[coveralls-image]: https://img.shields.io/coveralls/willsoto/validate-commit.svg?style=flat-square
-
-[depstat-url]: https://david-dm.org/willsoto/validate-commit
-[depstat-image]: https://david-dm.org/willsoto/validate-commit.svg?style=flat-square
 
 [download-badge]: http://img.shields.io/npm/dm/validate-commit.svg?style=flat-square
 
