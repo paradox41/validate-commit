@@ -29,11 +29,9 @@ export const jquery: Preset = {
       return false;
     }
 
-    const isMessageLengthValid: boolean = messageParts
-      .slice(1)
-      .every((part: string): boolean => {
-        return part.length < LONG_DESCRIPTION_MAX_LENGTH;
-      });
+    const isMessageLengthValid: boolean = messageParts.slice(1).every((part: string): boolean => {
+      return part.length < LONG_DESCRIPTION_MAX_LENGTH;
+    });
 
     if (!isMessageLengthValid) {
       log(

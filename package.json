@@ -55,7 +55,7 @@
     "lint": "tslint src/**/*.ts test/**/*.ts",
     "watch": "tsc --watch",
     "pretest": "npm run build",
-    "test": "mocha --compilers js:babel-core/register",
+    "test": "mocha --require babel-core/register",
     "test-watch": "npm test -- --watch",
     "prebuild": "npm run clean",
     "build": "tsc",

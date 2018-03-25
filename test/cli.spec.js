@@ -1,22 +1,20 @@
-import { exec, execSync } from 'child_process';
-import path from 'path';
+import { exec, execSync } from "child_process";
+import path from "path";
 
-import { expect } from 'chai';
-import 'mocha-sinon';
+import { expect } from "chai";
+import "mocha-sinon";
 
-const pathToCLI = path.resolve(__dirname, '..', 'bin', 'index.js');
+const pathToCLI = path.resolve(__dirname, "..", "bin", "index.js");
 
-describe('cli', function() {
+describe("cli", function() {
   beforeEach(function() {
-    this.command = [
-      pathToCLI
-    ];
+    this.command = [pathToCLI];
   });
 
-  it('should not throw an error with a valid commit message', function(done) {
+  it("should not throw an error with a valid commit message", function(done) {
     this.command.push('"chore: foo"');
 
-    let command = this.command.join(' ');
+    let command = this.command.join(" ");
 
     exec(command, function(error) {
       if (error) {
@@ -29,10 +27,10 @@ describe('cli', function() {
     });
   });
 
-  it('should throw an error with an invalid commit message', function() {
+  it("should throw an error with an invalid commit message", function() {
     this.command.push('"foo"');
 
-    let command = this.command.join(' ');
+    let command = this.command.join(" ");
 
     let fn = () => {
       return execSync(command);
@@ -41,10 +39,10 @@ describe('cli', function() {
     expect(fn).to.throw(Error);
   });
 
-  it('should not throw an error with a valid commit msm file', function(done) {
-    this.command.push('--mf ./test/fixtures/angular/valid.txt');
+  it("should not throw an error with a valid commit msm file", function(done) {
+    this.command.push("--mf ./test/fixtures/angular/valid.txt");
 
-    let command = this.command.join(' ');
+    let command = this.command.join(" ");
 
     exec(command, function(error) {
       if (error) {
@@ -57,10 +55,10 @@ describe('cli', function() {
     });
   });
 
-  it('should throw an error with a invalid commit msm file', function() {
-    this.command.push('--mf .git/WRONG_COMMIT_EDITMSG');
+  it("should throw an error with a invalid commit msm file", function() {
+    this.command.push("--mf .git/WRONG_COMMIT_EDITMSG");
 
-    let command = this.command.join(' ');
+    let command = this.command.join(" ");
 
     let fn = () => {
       return execSync(command);
@@ -68,6 +66,4 @@ describe('cli', function() {
 
     expect(fn).to.throw(Error);
   });
-
 });
-

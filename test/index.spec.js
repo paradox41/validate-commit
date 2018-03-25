@@ -1,59 +1,56 @@
-import path from 'path';
+import path from "path";
 
-import { expect } from 'chai';
-import 'mocha-sinon';
+import { expect } from "chai";
+import "mocha-sinon";
 
-import presets, {
-  validateMessage,
-  validateMessageFromFile
-} from '../dist';
+import presets, { validateMessage, validateMessageFromFile } from "../dist";
 
-describe('#validateMessage', function() {
-  it('should return false if no message is provided', function() {
+describe("#validateMessage", function() {
+  it("should return false if no message is provided", function() {
     expect(validateMessage()).to.be.false;
-    expect(validateMessage('')).to.be.false;
+    expect(validateMessage("")).to.be.false;
   });
 
-  it('should throw an error if no valid preset is provided', function() {
+  it("should throw an error if no valid preset is provided", function() {
     const f = function() {
-      validateMessage('chore(package): foo', {
-        preset: 'notapreset'
+      validateMessage("chore(package): foo", {
+        preset: "notapreset"
       });
     };
 
     expect(f).to.throw(Error);
   });
 
-  describe('#ignorePattern', function() {
+  describe("#ignorePattern", function() {
     beforeEach(function() {
-      this.sinon.stub(console, 'warn');
+      this.sinon.stub(console, "warn");
     });
 
     afterEach(function() {
       this.sinon.restore();
     });
 
-    it('should omit validation if ignore pattern is provided', function() {
-      expect(validateMessage('WIP: ignore me')).to.be.true;
+    it("should omit validation if ignore pattern is provided", function() {
+      expect(validateMessage("WIP: ignore me")).to.be.true;
     });
 
-    it('should warn that validation has been ignored when SILENT env variable is missing and ignore pattern is used', function() {
+    it("should warn that validation has been ignored when SILENT env variable is missing and ignore pattern is used", function() {
       delete process.env.SILENT;
-      validateMessage('WIP: work in progress');
+      validateMessage("WIP: work in progress");
       expect(console.warn.calledOnce).to.be.true;
-      expect(console.warn.calledWith('Commit message validation ignored.')).to.be.true;
+      expect(console.warn.calledWith("Commit message validation ignored.")).to.be.true;
       process.env.SILENT = true;
     });
   });
 });
 
-describe('#validateMessageFromFile', function() {
+describe("#validateMessageFromFile", function() {
   const validFixture = {};
   const wrongFixture = {};
 
   for (let preset in presets) {
-    validFixture[preset] = path.resolve(__dirname, 'fixtures', preset, 'valid.txt');
-    wrongFixture[preset] = path.resolve(__dirname, 'fixtures', preset, 'wrong.txt');
+    validFixture[preset] = path.resolve(__dirname, "fixtures", preset, "valid.txt");
+    wrongFixture[preset] = path.resolve(__dirname, "fixtures", preset, "wrong.txt");
   }
 
   for (let preset in validFixture) {
@@ -68,69 +65,67 @@ describe('#validateMessageFromFile', function() {
     });
   }
 
-  it('should use the default preset', function() {
-    const defaultPreset = 'angular';
-    const fixture = path.resolve(__dirname, 'fixtures', defaultPreset, 'wrong.txt');
+  it("should use the default preset", function() {
+    const defaultPreset = "angular";
+    const fixture = path.resolve(__dirname, "fixtures", defaultPreset, "wrong.txt");
 
     expect(validateMessageFromFile(fixture)).to.be.false;
   });
 });
 
-describe('#logging', function() {
+describe("#logging", function() {
   beforeEach(function() {
     // Some mocha reporters use console.log as well, so the tests that stub it may not yield any output
     // Workaround
     var log = console.log;
-    this.sinon.stub(console, 'log', function() {
-      return log.apply(log, arguments);
-    });
+    this.sinon.stub(console, "log").callsFake(() => log.apply(log, arguments));
   });
 
-  afterEach(function () {
+  afterEach(function() {
     this.sinon.restore();
   });
 
-  describe('(SILENT ON)', function() {
-    it('should not work when SILENT env variable is true (boolean)', function() {
+  describe("(SILENT ON)", function() {
+    it("should not work when SILENT env variable is true (boolean)", function() {
       process.env.SILENT = true;
-      validateMessage('invalid message');
+      validateMessage("invalid message");
       expect(console.log.calledOnce).to.be.false;
     });
 
-    it('should not work when SILENT env variable is true (string)', function() {
-      process.env.SILENT = 'true';
-      validateMessage('invalid message');
+    it("should not work when SILENT env variable is true (string)", function() {
+      process.env.SILENT = "true";
+      validateMessage("invalid message");
       expect(console.log.calledOnce).to.be.false;
     });
   });
 
-  describe('(SILENT OFF)', function() {
-    it('should work when SILENT env variable is missing', function() {
+  describe("(SILENT OFF)", function() {
+    it("should work when SILENT env variable is missing", function() {
       delete process.env.SILENT;
-      validateMessage('invalid message');
+      validateMessage("invalid message");
       expect(console.log.calledOnce).to.be.true;
-      process.env.SILENT = 'true';
+      process.env.SILENT = "true";
     });
 
-    it('SILENT env variable false (string)', function() {
-      process.env.SILENT = 'false';
-      validateMessage('invalid message');
+    it("SILENT env variable false (string)", function() {
+      process.env.SILENT = "false";
+      validateMessage("invalid message");
       expect(console.log.calledOnce).to.be.true;
-      process.env.SILENT = 'true';
+      process.env.SILENT = "true";
     });
 
-    it('SILENT env variable false (boolean)', function() {
+    it("SILENT env variable false (boolean)", function() {
       process.env.SILENT = false;
-      validateMessage('invalid message');
+      validateMessage("invalid message");
       expect(console.log.calledOnce).to.be.true;
-      process.env.SILENT = 'true';
+      process.env.SILENT = "true";
     });
 
-    it('SILENT env variable any string (string)', function() {
-      process.env.SILENT = 'ciaociao';
-      validateMessage('invalid message');
+    it("SILENT env variable any string (string)", function() {
+      process.env.SILENT = "ciaociao";
+      validateMessage("invalid message");
       expect(console.log.calledOnce).to.be.true;
-      process.env.SILENT = 'true';
+      process.env.SILENT = "true";
     });
   });
 });
