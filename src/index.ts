@@ -1,19 +1,8 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
-import {
-  Opts,
-  Preset,
-  Presets
-} from './interfaces';
+import { Opts, Preset, Presets } from "./interfaces";
 
-import {
-  angular,
-  atom,
-  ember,
-  eslint,
-  jquery,
-  jshint
-} from './presets';
+import { angular, atom, ember, eslint, jquery, jshint } from "./presets";
 
 const presets: Presets = {
   angular,
@@ -37,9 +26,12 @@ function validateMessage(message: string, options: Opts = {}): boolean {
 
   message = message.trim();
 
-  options = (<any>Object).assign({
-    preset: 'angular'
-  }, options);
+  options = (<any>Object).assign(
+    {
+      preset: "angular"
+    },
+    options
+  );
 
   const preset: Preset = presets[options.preset];
 
@@ -50,15 +42,15 @@ function validateMessage(message: string, options: Opts = {}): boolean {
   const { validate, ignorePattern }: Preset = preset;
 
   if (ignorePattern && ignorePattern.test(message)) {
-    if (process.env.SILENT === 'true' || !process.env.SILENT) {
-      console.warn('Commit message validation ignored.');
+    if (process.env.SILENT === "true" || !process.env.SILENT) {
+      console.warn("Commit message validation ignored.");
     }
 
     return true;
   }
 
   return validate(message);
-};
+}
 
 /**
  * @private
@@ -68,7 +60,7 @@ function validateMessage(message: string, options: Opts = {}): boolean {
  */
 function getMessageFromBuffer(buffer: Buffer): string {
   return buffer.toString();
-};
+}
 
 /**
  * Validate a commit message from a file - e.g., for a pre-commit hook
@@ -81,11 +73,8 @@ function validateMessageFromFile(file: string, options: Opts = {}): boolean {
   const message: string = getMessageFromBuffer(buffer);
 
   return validateMessage(message, options);
-};
+}
 
 export default presets;
 
-export {
-  validateMessage,
-  validateMessageFromFile
-};
+export { validateMessage, validateMessageFromFile };

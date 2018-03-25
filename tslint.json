@@ -1,93 +1,17 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
+  "extends": "tslint:recommended",
   "rules": {
-    "import-destructuring-spacing": true,
-    "class-name": true,
-    "comment-format": [
+    "max-line-length": {
+      "options": [
+        100
+      ]
+    },
+    "semicolon": [
       true,
-      "check-space"
+      "always"
     ],
-    "curly": false,
-    "eofline": false,
-    "indent": "spaces",
-    "jsdoc-format": true,
-    "max-line-length": [
-      true,
-      140
-    ],
-    "member-ordering": [
-      true,
-      "public-before-private",
-      "static-before-instance",
-      "variables-before-functions"
-    ],
-    "new-parens": true,
-    "no-arg": true,
-    "no-bitwise": true,
-    "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": true,
-    "no-construct": true,
-    "no-duplicate-key": true,
-    "no-duplicate-variable": true,
-    "no-empty": true,
-    "no-eval": true,
-    "no-inferrable-types": false,
-    "no-trailing-whitespace": true,
-    "no-unused-expression": true,
-    "no-unused-variable": true,
-    "no-unreachable": true,
-    "no-use-before-declare": true,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
-    ],
-    "one-variable-per-declaration": [
-      true,
-      "ignore-for-loop"
-    ],
-    "quotemark": [
-      true,
-      "single"
-    ],
-    "radix": true,
-    "semicolon": true,
-    "switch-default": true,
-    "trailing-comma": "never",
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
-    "typedef-whitespace": [
-      true,
-      {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
-      }
-    ],
-    "variable-name": false,
-    "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
-    ],
-    "typedef": [
-      true,
-      "call-signature",
-      "parameter",
-      "property-declaration",
-      "variable-declaration",
-      "member-variable-declaration"
+    "trailing-comma": [
+      false
     ]
   }
 }

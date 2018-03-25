@@ -1,29 +1,26 @@
-import * as chalk from 'chalk';
+import * as chalk from "chalk";
 
-import {
-  LogLevels,
-  Severity
-} from './interfaces';
+import { LogLevels, Severity } from "./interfaces";
 
 const LOG_LEVELS: LogLevels = {
   error: {
-    color: 'red'
+    color: "red"
   },
   warn: {
-    color: 'yellow'
+    color: "yellow"
   },
   info: {
-    color: 'cyan'
+    color: "cyan"
   },
   debug: {
-    color: 'white'
+    color: "white"
   }
 };
 
-export function log(message: string, severity: Severity = 'info'): void {
-  const color: string = LOG_LEVELS[severity].color || 'cyan';
+export function log(message: string, severity: Severity = "info"): void {
+  const color: string = LOG_LEVELS[severity].color || "cyan";
 
-  if (process.env.SILENT !== 'true') {
+  if (process.env.SILENT !== "true") {
     console.log((<any>chalk)[color](message));
   }
-};
+}

@@ -1,10 +1,6 @@
-import {
-  Preset
-} from '../interfaces';
+import { Preset } from "../interfaces";
 
-import {
-  log
-} from '../helpers';
+import { log } from "../helpers";
 
 export const angular: Preset = {
   validate(message: string): boolean {
@@ -20,24 +16,24 @@ export const angular: Preset = {
     const MAX_LENGTH: number = 100;
     const PATTERN: RegExp = /^(?:fixup!\s*)?(\w*)(\(([\w\$\.\*/-]*)\))?\: (.*)$/;
     const TYPES: any = {
+      build: true,
+      chore: true,
+      ci: true,
+      docs: true,
       feat: true,
       fix: true,
-      docs: true,
-      style: true,
-      refactor: true,
       perf: true,
-      test: true,
-      build: true,
-      ci: true,
-      chore: true,
-      revert: true
+      refactor: true,
+      revert: true,
+      style: true,
+      test: true
     };
 
     // angular only cares about the first line
-    message = message.split('\n').shift();
+    message = message.split("\n").shift();
 
     if (message.length >= MAX_LENGTH) {
-      log(`Message is longer than ${MAX_LENGTH} characters!`, 'error');
+      log(`Message is longer than ${MAX_LENGTH} characters!`, "error");
 
       return false;
     }
@@ -45,7 +41,7 @@ export const angular: Preset = {
     const match: RegExpExecArray = PATTERN.exec(message);
 
     if (!match) {
-      log(`Message does not match "<type>(<scope>): <subject>"! was: ${message}`, 'error');
+      log(`Message does not match "<type>(<scope>): <subject>"! was: ${message}`, "error");
 
       return false;
     }
@@ -56,8 +52,8 @@ export const angular: Preset = {
     // const subject: string = match[4];
 
     if (!TYPES.hasOwnProperty(type)) {
-      log(`'${type}' is not an allowed type!`, 'error');
-      log(`Valid types are: ${Object.keys(TYPES).join(', ')}`, 'info');
+      log(`'${type}' is not an allowed type!`, "error");
+      log(`Valid types are: ${Object.keys(TYPES).join(", ")}`, "info");
 
       return false;
     }
