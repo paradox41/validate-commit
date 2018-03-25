@@ -65,11 +65,9 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="validate-commit">Validate Commit</h1>
-				<p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/willsoto/validate-commit.svg" alt="Greenkeeper badge"></a></p>
+				<p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/willsoto/validate-commit.svg" alt="Greenkeeper badge"></a>
+				<a href="https://circleci.com/gh/willsoto/validate-commit"><img src="https://circleci.com/gh/willsoto/validate-commit.svg?style=svg" alt="CircleCI"></a></p>
 				<p><a href="https://npmjs.org/package/validate-commit"><img src="https://img.shields.io/npm/v/validate-commit.svg?style=flat-square" alt="NPM version"></a>
-					<a href="https://travis-ci.org/willsoto/validate-commit"><img src="https://img.shields.io/travis/willsoto/validate-commit.svg?style=flat-square" alt="Build Status"></a>
-					<a href="https://coveralls.io/r/willsoto/validate-commit"><img src="https://img.shields.io/coveralls/willsoto/validate-commit.svg?style=flat-square" alt="Coveralls Status"></a>
-					<a href="https://david-dm.org/willsoto/validate-commit"><img src="https://david-dm.org/willsoto/validate-commit.svg?style=flat-square" alt="Dependency Status"></a>
 				<a href="https://npmjs.org/package/validate-commit"><img src="http://img.shields.io/npm/dm/validate-commit.svg?style=flat-square" alt="Downloads"></a></p>
 				<blockquote>
 					<p>Validate commit messages according to various presets</p>
@@ -120,6 +118,9 @@ $ ...
 				<p>However you can mute it:</p>
 				<pre><code class="lang-bash">$ validate-commit-msg <span class="hljs-_">-s</span> <span class="hljs-string">'unknown(something): wrong'</span>
 </code></pre>
+				<p>Validate a commit with .git directory in another location</p>
+				<pre><code class="lang-bash">$ validate-commit-msg --mf ../../some/.git/module/COMMIT_EDITMSG
+</code></pre>
 				<h3 id="within-node">Within node</h3>
 				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> validateCommit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'validate-commit'</span>).validateMessage;
 validateCommit(<span class="hljs-string">'chore(package): some message'</span>); <span class="hljs-comment">// &gt; true</span>
@@ -153,7 +154,8 @@ validateCommit(<span class="hljs-string">'Unk: Awesome'</span>, { <span class="h
     -h, --<span class="hljs-keyword">help</span>             output usage information
     -V, --<span class="hljs-keyword">version</span>          output the <span class="hljs-keyword">version</span> <span class="hljs-keyword">number</span>
     -<span class="hljs-keyword">p</span>, --preset <span class="hljs-symbol">&lt;preset&gt;</span>  specify <span class="hljs-keyword">a</span> preset (angular|atom|eslint|ember|jquery|jshint) [angular]
-    -s, --<span class="hljs-keyword">silent</span>           mute <span class="hljs-built_in">log</span> <span class="hljs-keyword">messages</span> [false]</span>
+    -s, --<span class="hljs-keyword">silent</span>           mute <span class="hljs-built_in">log</span> <span class="hljs-keyword">messages</span> [false]
+    --mf --msgfile         relative path <span class="hljs-keyword">to</span> COMMIT_EDITMSG <span class="hljs-keyword">file</span></span>
 </code></pre><h3 id="development">Development</h3>
 				<p><code>npm i</code></p>
 				<h2 id="license">License</h2>
